@@ -54,6 +54,7 @@ button.active {
 /* Game board */
 #game {
   display: grid;
+    gap: 0.5rem;
 }
 
 .cell {
