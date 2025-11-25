@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buscaminas Algebraico</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Buscaminas Algebraico</h1>
+  </header>
+
+  <main class="layout">
+    
+    <!-- Panel Izquierdo -->
+    <aside class="sidebar">
+      <h2>📌 Métodos</h2>
+      <ul>
+        <li>↪ Sumar o restar el mismo número a ambos lados.</li>
+        <li>✖ Multiplicar o dividir por un número (si < 0 invierte signo).</li>
+        <li>🔁 Simplificar expresiones equivalentes.</li>
+        <li>📊 Representar en recta numérica (opcional).</li>
+      </ul>
+    </aside>
+
+    <!-- Centro: Juego -->
+    <section id="gameContainer">
+      <div id="controls">
+        <button id="flagModeBtn">🚩 Modo Bandera</button>
+        <button id="resetBtn">🔄 Reiniciar</button>
+      </div>
+      <div id="game"></div>
+      <div id="status"></div>
+    </section>
+
+    <!-- Panel derecho -->
+    <aside class="sidebar">
+      <h2>🧠 Ejemplos</h2>
+      <div id="examples">
+        <p><strong>Ej:</strong> 2x + 4 ≥ 10 → 2x ≥ 6 → x ≥ 3</p>
+        <p><strong>Ej:</strong> -3x < 6 → dividir por -3 → x > -2</p>
+      </div>
+
+      <h2>⭐ Progreso</h2>
+      <p>Puntos: <span id="score">0</span></p>
+
+      <h3>Casillas Resueltas:</h3>
+      <ul id="solvedList"></ul>
+    </aside>
+
+  </main>
+
+<script src="game.js"></script>
+</body>
+</html>

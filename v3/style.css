@@ -1,0 +1,91 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #6f8a96;
+  color: black;
+}
+
+header {
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Layout */
+.layout {
+  display: grid;
+  grid-template-columns: 250px auto 250px;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+/* Sidebar panels */
+.sidebar {
+  background: rgba(255,255,255,0.2);
+  padding: 1rem;
+  border-radius: 10px;
+  color: white;
+}
+
+.sidebar ul { padding-left: 1rem; }
+
+/* Controls */
+#controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  background: #edeae1;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+button.active {
+  background: #0098c8;
+  color: white;
+}
+
+/* Game board */
+#game {
+  display: grid;
+}
+
+.cell {
+  height: 40px;
+  background: #edeae1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border-radius:5px;
+  cursor:pointer;
+  transition: background 0.2s;
+}
+
+.cell.revealed {
+  background: #878787;
+  font-weight:bold;
+}
+
+.cell.flagged {
+  background: #213b77;
+  color:white;
+}
+
+.cell.bomb {
+  background: red;
+  color:white;
+}
+
+/* Status and Score */
+#status {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
