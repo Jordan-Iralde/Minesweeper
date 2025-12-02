@@ -1,13 +1,8 @@
 body {
   margin: 0;
-  padding: 0;
   font-family: Arial, sans-serif;
-  background: #121212;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  background: #6f8a96;
+  color: black;
 }
 
 header {
@@ -86,35 +81,6 @@ button.active {
 .cell.bomb {
   background: red;
   color:white;
-}
-
-.menu-container {
-  text-align: center;
-}
-
-h1 {
-  margin-bottom: 30px;
-  font-size: 32px;
-}
-
-.menu-btn {
-  display: block;
-  width: 260px;
-  padding: 15px;
-  margin: 12px auto;
-  background: #1e1e1e;
-  border: 2px solid #2ecc71;
-  color: #2ecc71;
-  font-size: 20px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.menu-btn:hover {
-  background: #2ecc71;
-  color: #121212;
-  transform: scale(1.05);
 }
 
 /* Status and Score */
