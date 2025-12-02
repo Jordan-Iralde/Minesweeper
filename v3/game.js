@@ -12,11 +12,15 @@ let board, revealed, flagged, flagMode = false, score = 0;
 
 const inequalities = [
   "2x + 4 ≥ 10", "x - 3 < 5", "3x > 9", "-x + 4 > 1",
-  "2(3+x) ≥ 10", "x/2 ≤ 6", "5x > 15", "x + 2 ≥ 1"
+  "2(3+x) ≥ 10", "x*2 ≤ 6", "5x > 15", "x + 2 ≥ 1"
 ];
 
+const ecuacionesLineales = [
+  "2x + 4 = 10", "x - 3 = 5", "3x = 9", "-x + 4 = 1",
+];
 // Random inequality generator
 const getIneq = () => inequalities[Math.floor(Math.random() * inequalities.length)];
+const getEq = () => ecuacionesLineales[Math.floor(Math.random() * ecuacionesLineales.length)];
 
 flagBtn.onclick = () => {
   flagMode = !flagMode;
@@ -103,10 +107,13 @@ function reveal(r, c) {
 
   if (board[r][c] > 0) {
     const text = getIneq();
+    const text2 = getEq();
     cell.textContent = text;
+    cell.textContent2 = text2;
     logSolved(text);
     addPoints(10);
   } else {
+    cell.textContent = "";
     cell.textContent = "";
     for (let i = -1; i <= 1; i++)
       for (let j = -1; j <= 1; j++)
