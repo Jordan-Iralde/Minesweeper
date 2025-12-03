@@ -1,92 +1,182 @@
+/* Reset básico */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #6f8a96;
-  color: black;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg,#1f2937,#3a4a58);
+  color: #eee;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
 }
 
+/* Header */
 header {
   text-align: center;
-  padding: 1rem;
-  font-size: 1.5rem;
+  padding: 1rem 0;
+  font-size: 2rem;
   font-weight: bold;
+  color: #ffd700;
+  text-shadow: 2px 2px 4px #000;
+  animation: pulse 2s infinite;
 }
 
 /* Layout */
 .layout {
   display: grid;
-  grid-template-columns: 250px auto 250px;
+  grid-template-columns: 1fr 2fr 1fr;
   gap: 1rem;
-  padding: 1rem;
+  width: 100%;
+  max-width: 1200px;
 }
 
-/* Sidebar panels */
+/* Sidebar */
 .sidebar {
-  background: rgba(255,255,255,0.2);
+  background: rgba(50,50,50,0.85);
   padding: 1rem;
-  border-radius: 10px;
-  color: white;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  overflow-y: auto;
+  max-height: 60vh;
+  font-size: 0.9rem;
 }
 
-.sidebar ul { padding-left: 1rem; }
+/* Scroll smooth for sidebar */
+.sidebar::-webkit-scrollbar { width: 6px; }
+.sidebar::-webkit-scrollbar-thumb { background: #ffd700; border-radius: 3px; }
 
-/* Controls */
-#controls {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 1rem;
-}
-
+/* Buttons */
 button {
-  padding: 10px;
+  padding: 10px 15px;
   border: none;
-  background: #edeae1;
+  background: #ffd700;
+  color: black;
+  font-weight: bold;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px #c7a500;
 }
+button:hover { transform: translateY(-2px); box-shadow: 0 6px #c7a500; }
+button:active { transform: translateY(2px); box-shadow: 0 2px #c7a500; }
+button.active { background: #ff6f00; color:white; }
 
-button.active {
-  background: #0098c8;
-  color: white;
-}
-
-/* Game board */
+/* Game grid */
 #game {
   display: grid;
-    gap: 0.5rem;
+  justify-content: center;
+  width: 100%;
+  gap: 0.5rem; /* más espacio en desktop */
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); /* celdas grandes en desktop */
 }
 
+/* Celdas */
 .cell {
-  height: 40px;
-  background: #edeae1;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  border-radius:5px;
-  cursor:pointer;
-  transition: background 0.2s;
-}
-
-.cell.revealed {
-  background: #878787;
-  font-weight:bold;
-}
-
-.cell.flagged {
-  background: #213b77;
-  color:white;
-}
-
-.cell.bomb {
-  background: red;
-  color:white;
-}
-
-/* Status and Score */
-#status {
-  margin-top: 10px;
-  text-align: center;
-  font-size: 1.2rem;
+  aspect-ratio: 1 / 1;  
+  width: 100%;
+  max-width: 80px; /* celdas grandes en desktop */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-weight: bold;
+  font-size: 1rem; /* mejor visibilidad de inecuación */
+  border-radius: 8px;
+  background: linear-gradient(145deg,#ccc,#aaa);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+  text-align: center;
+  line-height: 1.1;
+  word-wrap: break-word;
+}
+
+/* Hover efecto */
+.cell:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255,255,255,0.6);
+}
+
+/* Revelar */
+.cell.revealed {
+  background: linear-gradient(145deg,#888,#555);
+  color: #fff;
+  transform: rotateX(360deg);
+  animation: flip 0.4s ease forwards;
+}
+
+/* Bombas */
+.cell.bomb {
+  background: #c0392b;
+  color: white;
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Banderas */
+.cell.flagged {
+  background: #005f87;
+  color:white;
+  animation: bounce 0.6s infinite alternate;
+}
+
+/* Ganar */
+.cell.win {
+  background: #27ae60;
+  color:white;
+  animation: glow 1.2s infinite alternate;
+}
+
+/* Status */
+#status {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px black;
+}
+
+/* Animaciones CSS */
+@keyframes pulse {
+  0%,100%{ transform: scale(1); }
+  50%{ transform: scale(1.05); }
+}
+
+@keyframes flip {
+  0% { transform: rotateX(0deg); }
+  100% { transform: rotateX(360deg); }
+}
+
+@keyframes shake {
+  0%,100%{ transform: translateX(0); }
+  25%{ transform: translateX(-5px); }
+  75%{ transform: translateX(5px); }
+}
+
+@keyframes bounce {
+  0%{ transform: translateY(0); }
+  100%{ transform: translateY(-8px); }
+}
+
+@keyframes glow {
+  0%{ box-shadow: 0 0 5px #27ae60; }
+  100%{ box-shadow: 0 0 20px #27ae60; }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; gap: 0.5rem; }
+  #game { grid-template-columns: repeat(auto-fit, minmax(35px, 1fr)); gap: 0.2rem; }
+  .cell { max-width: 50px; font-size: 0.85rem; }
+  header { font-size: 1.5rem; }
+  button { padding: 6px 10px; font-size: 0.8rem; }
+  .sidebar { font-size: 0.85rem; max-height: 50vh; padding: 0.5rem; }
+}
+
+@media (max-width: 500px) {
+  #game { grid-template-columns: repeat(auto-fit, minmax(20px, 1fr)); gap: 0.1rem; }
+  .cell { max-width: 30px; font-size: 0.7rem; }
+  header { font-size: 1.2rem; }
+  button { padding: 5px 8px; font-size: 0.7rem; }
+  .sidebar { font-size: 0.8rem; max-height: 40vh; padding: 0.4rem; }
 }

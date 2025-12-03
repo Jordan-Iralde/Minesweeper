@@ -49,6 +49,28 @@
       <h3>Casillas Resueltas:</h3>
       <ul id="solvedList"></ul>
     </aside>
+<div id="juego">
+  <p id="mensaje">¡Empieza!</p>
+  <button onclick="perder()">Perder</button>
+</div>
+
+<button id="reiniciar" onclick="reiniciar()" style="display:none;">Reiniciar</button>
+
+<script>
+let estado = "inicio";
+
+function perder() {
+  estado = "perdido";
+  document.getElementById("mensaje").textContent = "Perdiste!";
+  document.getElementById("reiniciar").style.display = "block";
+}
+
+function reiniciar() {
+  estado = "inicio";
+  document.getElementById("mensaje").textContent = "¡Empieza!";
+  document.getElementById("reiniciar").style.display = "none";
+}
+</script>
 
   </main>
 
